@@ -5,10 +5,10 @@ import java.util.stream.IntStream;
 public class Recipe10 {
 	public static void main(String[] args) {
 
-		IntStream.rangeClosed(2, 29).peek(a -> {
+		IntStream.rangeClosed(2, 29).forEach(a -> {
 			boolean result = isPrime(a);
 			System.out.println(a + ":" + result);
-		}).sum();
+		});
 
 	}
 
