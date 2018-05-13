@@ -20,6 +20,8 @@ public class Recipe11 {
 		customers.stream().map(customer -> customer.getOrders().stream()).forEach(st -> {
 			st.forEach(System.out::println);
 		});
+		System.out.println("-----------FlatMap--------");
+		customers.stream().flatMap(customer -> customer.getOrders().stream()).forEach(System.out::println);
 
 	}
 
