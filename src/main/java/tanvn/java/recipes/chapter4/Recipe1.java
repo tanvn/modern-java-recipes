@@ -33,6 +33,14 @@ public class Recipe1 {
 				.collect(Collectors.toList());
 	}
 
+	private List<Golfer> golfers = Arrays.asList(new Golfer("Jack", "Nicklaus", 68), new Golfer("Tiger", "Woods", 70),
+			new Golfer("Tom", "Watson", 70), new Golfer("Ty", "Webb", 68), new Golfer("Bubba", "Watson", 70));
+
+	public List<Golfer> sortByScoreThenLastThenFirst() {
+		return golfers.stream().sorted(Comparator.comparingInt(Golfer::getScore).thenComparing(Golfer::getLast)
+				.thenComparing(Golfer::getFirst).reversed()).collect(Collectors.toList());
+	}
+
 	public static void main(String[] args) {
 		Recipe1 rcp1 = new Recipe1();
 		System.out.println(rcp1.lengthSortUsingComparator());
@@ -40,9 +48,12 @@ public class Recipe1 {
 		Stream<String> origin = Stream.of("This", "is", "a", "simple", "test", "about", "stream");
 		Stream<String> clone = origin.sorted();
 		System.out.println(clone.equals(origin));
+
 		System.out.println(rcp1.lengthSortThenAlphaSort());
 		clone.forEach(System.out::println);
 		// origin.forEach(System.out::println); // Error here
+		System.out.println("Golfer list :");
+		System.out.println(rcp1.sortByScoreThenLastThenFirst());
 
 	}
 
